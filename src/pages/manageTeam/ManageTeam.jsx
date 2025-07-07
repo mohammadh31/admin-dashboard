@@ -1,119 +1,108 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
-
+import { rows } from "./data";
+import { Box, Typography, useTheme } from "@mui/material";
+import {
+  AdminPanelSettingsOutlined,
+  LockOpenOutlined,
+  SecurityOutlined,
+} from "@mui/icons-material";
 function ManageTeam() {
-  const rows = [
-    {
-      id: 1,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-    {
-      id: 2,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-    {
-      id: 3,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-    {
-      id: 4,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-    {
-      id: 5,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-    {
-      id: 6,
-      col1: 1,
-      col2: "avnln",
-      col3: "amv;ma@gmail.com'",
-      col4: 19,
-      col5: +96329939849,
-      col6: "a;vmm;",
-    },
-  ];
-
+  const theme = useTheme();
   const columns = [
     {
-      field: "col1",
+      field: "id",
       headerName: "ID",
-      flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
-      field: "col2",
+      field: "name",
       headerName: "Name",
       flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
-      field: "col3",
+      field: "email",
       headerName: "Email",
       flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
-      field: "col4",
+      field: "age",
       headerName: "Age",
-      flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
-      field: "col5",
+      field: "phone",
       headerName: "Phone",
       flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
-      field: "col6",
+      field: "access",
       headerName: "Access",
-      flex: 1,
       align: "center",
       headerAlign: "center",
+      flex: 1,
+      renderCell: ({ row: { access } }) => {
+        return (
+          <Box
+            mx="auto"
+            mt={1}
+            borderRadius={1}
+            width={110}
+            padding={1}
+            display={"flex"}
+            justifyContent="space-evenly"
+            sx={{
+              backgroundColor:
+                access === "Admin"
+                  ? theme.palette.primary.dark
+                  : access === "Manager"
+                  ? theme.palette.secondary.dark
+                  : theme.palette.success.dark,
+            }}
+          >
+            {access === "Admin" ? (
+              <AdminPanelSettingsOutlined
+                fontSize="small"
+                // @ts-ignore
+                sx={{ color: theme.palette.common.white }}
+              />
+            ) : access === "Manager" ? (
+              <SecurityOutlined
+                fontSize="small"
+                sx={{ color: theme.palette.common.white }}
+              />
+            ) : (
+              <LockOpenOutlined
+                fontSize="small"
+                sx={{ color: theme.palette.common.white }}
+              />
+            )}
+
+            <Typography fontSize={14} sx={{ color: "white" }}>
+              {access}
+            </Typography>
+          </Box>
+        );
+      },
     },
   ];
 
   return (
-    <div>
-      <div style={{ height: 600, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          // @ts-ignore
-          columns={columns}
-        />
-      </div>
-    </div>
+    <Box mx="auto" sx={{ height: 600, width: "95%" }}>
+      <DataGrid
+        rows={rows}
+        // @ts-ignore
+        columns={columns}
+      />
+    </Box>
   );
 }
 
