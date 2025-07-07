@@ -7,6 +7,7 @@ import SideBar from "./components/SideBar";
 import { useState } from "react";
 import { useMemo } from "react";
 import { getDesignTokens } from "./themes";
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -78,7 +79,10 @@ export default function PersistentDrawerLeft() {
           DrawerHeader={DrawerHeader}
           handleDrawerClose={handleDrawerClose}
         />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}></Box>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          <Outlet />
+        </Box>
       </Box>
     </ThemeProvider>
   );
