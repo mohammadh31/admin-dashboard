@@ -35,13 +35,13 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
-export const DrawerHeader = styled("div")(({ theme }) => ({
+const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
 }));
 
 export default function PersistentDrawerLeft() {
@@ -65,7 +65,7 @@ export default function PersistentDrawerLeft() {
   const theme = useMemo(() => createTheme(getDesignTokens({ mode })), [mode]);
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <TopBar
@@ -78,13 +78,7 @@ export default function PersistentDrawerLeft() {
           DrawerHeader={DrawerHeader}
           handleDrawerClose={handleDrawerClose}
         />
-        <Main
-          // @ts-ignore
-          open={open}
-        >
-          <DrawerHeader />
-          <Typography sx={{ marginBottom: 2 }}>Lorem ipsum</Typography>
-        </Main>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}></Box>
       </Box>
     </ThemeProvider>
   );

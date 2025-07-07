@@ -24,7 +24,8 @@ const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
@@ -33,10 +34,10 @@ const AppBar = styled(MuiAppBar, {
       // @ts-ignore
       props: ({ open }) => open,
       style: {
+        marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: `${drawerWidth}px`,
-        transition: theme.transitions.create(["margin", "width"], {
-          easing: theme.transitions.easing.easeOut,
+        transition: theme.transitions.create(["width", "margin"], {
+          easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.enteringScreen,
         }),
       },
@@ -100,7 +101,7 @@ function TopBar({ handleDrawerOpen, open, setmyMode }) {
           edge="start"
           sx={[
             {
-              mr: 2,
+              marginRight: 5,
             },
             open && { display: "none" },
           ]}
