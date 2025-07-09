@@ -96,7 +96,7 @@ function ManageTeam() {
   ];
 
   return (
-    <Box mx="auto" sx={{ height: 600, width: "95%" }}>
+    <Box mx="auto" sx={{ height: "100%", width: "95%" }}>
       <DataGrid
         rows={rows}
         // @ts-ignore
