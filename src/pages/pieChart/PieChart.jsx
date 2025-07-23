@@ -1,7 +1,8 @@
 import React from "react";
+import Pie from "./Pie";
 
 const PieChart = () => {
-  return <div>PieChart</div>;
+  return <Pie />;
 };
 
 export default PieChart;
