@@ -1,7 +1,8 @@
 import React from "react";
+import Geo from "./Geo";
 
 const GeographyChart = () => {
-  return <div>GeographyChart</div>;
+  return <Geo />;
 };
 
 export default GeographyChart;
