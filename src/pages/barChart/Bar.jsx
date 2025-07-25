@@ -68,7 +68,7 @@ const Bar = () => {
         keys={["Spain", "France", "Germany"]}
         axisBottom={{ legend: "( Year )", legendOffset: 60 }}
         axisLeft={{ legend: "salary / month", legendOffset: -60 }}
-        margin={{ top: 80, right: 130, bottom: 90, left: 130 }}
+        margin={{ top: 80, right: 90, bottom: 90, left: 90 }}
         theme={{
           text: {
             fontSize: 11,

@@ -270,11 +270,11 @@ const data = [
   },
 ];
 
-const Line = () => {
+const Line = ({ isDashboard = false }) => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box sx={{ height: isDashboard ? "280px" : "75vh" }}>
       <ResponsiveLine /* or Line for fixed dimensions */
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -286,8 +286,15 @@ const Line = () => {
           reverse: false,
         }}
         curve="cardinal"
-        axisBottom={{ legend: "Transportation", legendOffset: 45 }}
-        axisLeft={{ legend: "Count", legendOffset: -50 }}
+        axisBottom={
+          isDashboard
+            ? null
+            : {
+                legend: "Transportation",
+                legendOffset: 45,
+              }
+        }
+        axisLeft={isDashboard ? null : { legend: "Count", legendOffset: -50 }}
         pointSize={10}
         pointColor={{ theme: "background" }}
         pointBorderWidth={2}
