@@ -42,11 +42,15 @@ const data = [
 
 // -------------------------------
 
-const Bar = () => {
+const Bar = ({ isDashboard = false }) => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box
+      sx={{
+        height: isDashboard ? "300px" : "75vh",
+      }}
+    >
       <ResponsiveBar /* or Bar for fixed dimensions */
         data={data}
         indexBy="year"
@@ -66,9 +70,19 @@ const Bar = () => {
           },
         ]}
         keys={["Spain", "France", "Germany"]}
-        axisBottom={{ legend: "( Year )", legendOffset: 60 }}
-        axisLeft={{ legend: "salary / month", legendOffset: -60 }}
-        margin={{ top: 80, right: 90, bottom: 90, left: 90 }}
+        axisBottom={{
+          legend: isDashboard ? null : "( Year )",
+          legendOffset: 60,
+        }}
+        axisLeft={{
+          legend: isDashboard ? null : "salary / month",
+          legendOffset: -60,
+        }}
+        margin={
+          isDashboard
+            ? { top: 5, right: 120, bottom: 20, left: 80 }
+            : { top: 80, right: 90, bottom: 90, left: 90 }
+        }
         theme={{
           text: {
             fontSize: 11,

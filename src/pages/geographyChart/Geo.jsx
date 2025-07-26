@@ -7,14 +7,14 @@ import data from "./data";
 
 // ----------------------------------
 
-const Geo = () => {
+const Geo = ({ isDashboard = false }) => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        height: "75vh",
-        border: `1px solid ${theme.palette.text.primary}`,
+        height: isDashboard ? "300px" : "75vh",
+        border: isDashboard ? null : `1px solid ${theme.palette.text.primary}`,
         borderRadius: 3,
         overflow: "hidden",
       }}
@@ -23,34 +23,38 @@ const Geo = () => {
         data={data}
         features={geo.features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        colors="OrRd"
-        domain={[0, 1000000]}
+        colors="spectral"
+        domain={[0, 800000]}
         unknownColor="#666666"
         label="properties.name"
         valueFormat=".2s"
-        projectionScale={190}
+        projectionScale={isDashboard ? 80 : 190}
         projectionRotation={[-10, 0, 0]}
         projectionTranslation={[0.5, 0.55]}
         enableGraticule={true}
         graticuleLineColor={theme.palette.divider}
         borderWidth={0.5}
         borderColor="#152538"
-        legends={[
-          {
-            anchor: "bottom-left",
-            direction: "column",
-            justify: true,
-            translateX: 20,
-            translateY: -100,
-            itemsSpacing: 0,
-            itemWidth: 94,
-            itemHeight: 18,
-            itemDirection: "left-to-right",
-            itemTextColor: theme.palette.text.primary,
-            itemOpacity: 0.85,
-            symbolSize: 18,
-          },
-        ]}
+        legends={
+          isDashboard
+            ? []
+            : [
+                {
+                  anchor: "bottom-left",
+                  direction: "column",
+                  justify: true,
+                  translateX: 20,
+                  translateY: -100,
+                  itemsSpacing: 0,
+                  itemWidth: 94,
+                  itemHeight: 18,
+                  itemDirection: "left-to-right",
+                  itemTextColor: theme.palette.text.primary,
+                  itemOpacity: 0.85,
+                  symbolSize: 18,
+                },
+              ]
+        }
         theme={{
           text: {
             fontSize: 11,
