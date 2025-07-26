@@ -20,21 +20,24 @@ import BarChart from "./pages/barChart/BarChart";
 import PieChart from "./pages/pieChart/PieChart";
 import LineChart from "./pages/lineChart/LineChart";
 import GeographyChart from "./pages/geographyChart/GeographyChart";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Dashboard />} />
-      <Route path="/team" element={<ManageTeam />} />
-      <Route path="/contacts" element={<ContactsInformation />} />
-      <Route path="/invoices" element={<InvoicesBalances />} />
-      <Route path="/form" element={<ProfileForm />} />
-      <Route path="/calendar" element={<Calendar />} />
-      <Route path="/faq" element={<FAQPage />} />
-      <Route path="/bar" element={<BarChart />} />
-      <Route path="/pie" element={<PieChart />} />
-      <Route path="/line" element={<LineChart />} />
-      <Route path="/geography" element={<GeographyChart />} />
+      <Route path="team" element={<ManageTeam />} />
+      <Route path="contacts" element={<ContactsInformation />} />
+      <Route path="invoices" element={<InvoicesBalances />} />
+      <Route path="form" element={<ProfileForm />} />
+      <Route path="calendar" element={<Calendar />} />
+      <Route path="faq" element={<FAQPage />} />
+      <Route path="bar" element={<BarChart />} />
+      <Route path="pie" element={<PieChart />} />
+      <Route path="line" element={<LineChart />} />
+      <Route path="geography" element={<GeographyChart />} />
+
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

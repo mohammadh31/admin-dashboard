@@ -8,6 +8,7 @@ import {
   styled,
   useTheme,
   Typography,
+  Tooltip,
 } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -79,7 +80,11 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Array1 = [
-  { text: "Dashboard", icon: <HomeOutlined />, path: "/" },
+  {
+    text: "Dashboard",
+    icon: <HomeOutlined />,
+    path: "/",
+  },
   { text: "Manage Team", icon: <PeopleOutline />, path: "/team" },
   {
     text: "Contacts Information",
@@ -195,7 +200,12 @@ function SideBar({ open, DrawerHeader, handleDrawerClose }) {
                       },
                 ]}
               >
-                {item.icon}
+                <Tooltip
+                  title={open === true ? null : item.text}
+                  placement="right-start"
+                >
+                  {item.icon}
+                </Tooltip>
               </ListItemIcon>
               <ListItemText
                 primary={item.text}
@@ -259,7 +269,12 @@ function SideBar({ open, DrawerHeader, handleDrawerClose }) {
                       },
                 ]}
               >
-                {item.icon}
+                <Tooltip
+                  title={open === true ? null : item.text}
+                  placement="right-start"
+                >
+                  {item.icon}
+                </Tooltip>
               </ListItemIcon>
               <ListItemText
                 primary={item.text}
@@ -325,7 +340,12 @@ function SideBar({ open, DrawerHeader, handleDrawerClose }) {
                       },
                 ]}
               >
-                {item.icon}
+                <Tooltip
+                  title={open === true ? null : item.text}
+                  placement="right-start"
+                >
+                  {item.icon}
+                </Tooltip>
               </ListItemIcon>
               <ListItemText
                 primary={item.text}

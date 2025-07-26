@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { Header } from "../../components/Header";
 
 const regEmail =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -74,6 +75,7 @@ const ProfileForm = () => {
       noValidate
       autoComplete="off"
     >
+      <Header title={"create user"} subTitle={"cerate a new user profile"} />
       <Stack flexDirection="row" gap={3}>
         <TextField
           sx={{ flex: 1 }}

@@ -6,6 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { Paper, Stack } from "@mui/material";
 import { formatDate } from "@fullcalendar/core";
 import "./calender.css";
+import { Header } from "../../components/Header";
 
 const Calendar = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -88,6 +89,7 @@ const Calendar = () => {
     <Stack direction={"row"}>
       <Paper className="demo-app-sidebar">
         <h2 style={{ textAlign: "center" }}>
+          <Header title={"calendar"} subTitle={"welcome to calender page"} />
           All Events ({currentEvents.length})
         </h2>
         <ul>{currentEvents.map(renderSidebarEvent)}</ul>

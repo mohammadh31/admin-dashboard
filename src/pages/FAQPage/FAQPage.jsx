@@ -9,6 +9,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Header } from "../../components/Header";
 // -----------------------------------------------------
 
 const Accordion = styled((props) => (
@@ -58,6 +59,7 @@ const FAQPage = () => {
   };
   return (
     <Stack direction={"column"} gap={1}>
+      <Header title={"FAQ page"} subTitle={"welcome to FAQ page"} />
       <Accordion
         // expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
